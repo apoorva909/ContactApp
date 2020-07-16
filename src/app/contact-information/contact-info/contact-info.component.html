@@ -1,0 +1,53 @@
+<div class="container">
+<div class="flex-container">
+    <div>
+        <p class="para1">REVIEW YOUR APPLICATION</p>
+        <h2 class="para2">Confirm your<br>contact details</h2>
+        <p class="para3">We'll use these details if we need to get in<br>touch about your coverage</p>
+    </div>
+    <div class="contact-info">
+    <form [formGroup]="contactForm" (ngSubmit)="submitData()">
+        <h3 class="contact-title">Your contact info</h3>
+        <div class="name-div">
+        <div>
+            <mat-form-field appearance="fill">
+              <mat-label>First Name</mat-label>
+              <input matInput formControlName="firstName">
+              <mat-error *ngIf="contactForm.get('firstName').invalid">This field is required</mat-error>
+            </mat-form-field>
+          </div>
+          <p class="last-name">
+            <mat-form-field appearance="fill">
+                <mat-label>Last Name</mat-label>
+                <input matInput formControlName="lastName">
+                <mat-error *ngIf="contactForm.get('lastName').invalid">This field is required</mat-error>
+              </mat-form-field>
+          </p>
+        </div>
+          <p>
+              
+            <mat-form-field class="email-phone" appearance="fill">
+                <mat-label>Email address</mat-label>
+                <input type="email" matInput formControlName="emailAddress">
+                <mat-error *ngIf="contactForm.get('emailAddress').invalid">This field is required</mat-error>
+              </mat-form-field>
+          </p>
+          <p>
+            <mat-form-field class="email-phone" appearance="fill">
+                <mat-label>Phone number</mat-label>
+                <input matInput formControlName="phoneNumber">
+                <mat-error *ngIf="contactForm.get('phoneNumber').invalid">This field is required</mat-error>
+              </mat-form-field>
+          </p>
+          <button type="submit" class="button-style" mat-raised-button >Next</button>
+          </form>
+    </div>
+</div>
+
+<div class="contact-data-color" *ngIf="showData">
+    <p>First name: {{contactForm.get('firstName').value}}</p>
+    <p>Last name: {{contactForm.get('lastName').value}}</p>
+    <p>Email address: {{contactForm.get('emailAddress').value}}</p>
+    <p>Phone number: {{contactForm.get('phoneNumber').value}}</p>
+</div>
+</div>
